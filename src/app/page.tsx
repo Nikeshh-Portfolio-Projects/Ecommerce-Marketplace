@@ -9,6 +9,7 @@ import {
   Leaf,
 } from 'lucide-react'
 import Link from 'next/link'
+import { serverClient } from "./_trpc/serverClient";
 
 const perks = [
   {
@@ -31,9 +32,18 @@ const perks = [
   },
 ]
 
-export default function Home() {
+export default async function Home() {
+
+  const hello = await serverClient.hello();
+  if (!hello) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <>
+    <div>
+      <p>{hello.greeting}</p>
+    </div>
       <MaxWidthWrapper>
         <div className='py-20 mx-auto text-center flex flex-col items-center max-w-3xl'>
           <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
