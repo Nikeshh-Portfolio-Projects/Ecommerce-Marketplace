@@ -5,7 +5,7 @@ import { cn, constructMetadata } from "@/lib/utils";
 import { Toaster } from 'sonner'
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import Provider from "@/app/_trpc/Provider";
+import { TrpcProvider } from "@/utils/trpc-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
           'relative h-full font-sans antialiased',
           inter.className
         )}>
-        <Provider>
+        <TrpcProvider>
           <main className='relative flex flex-col min-h-screen'>
               <Navbar />
               <div className='flex-grow flex-1'>
@@ -32,7 +32,7 @@ export default function RootLayout({
               <Footer />
           </main>
           <Toaster position='top-center' richColors />
-        </Provider>
+        </TrpcProvider>
       </body>
     </html>
   );
