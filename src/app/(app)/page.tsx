@@ -9,7 +9,6 @@ import {
   Leaf,
 } from 'lucide-react'
 import Link from 'next/link'
-import ListUsers from './ListUsers'
 
 const perks = [
   {
@@ -35,7 +34,6 @@ const perks = [
 export default async function Home() {
   return (
     <>
-      <ListUsers />
       <MaxWidthWrapper>
         <div className='py-20 mx-auto text-center flex flex-col items-center max-w-3xl'>
           <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
