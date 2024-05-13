@@ -66,15 +66,15 @@ const yourOwnAndPurchased: Access = async ({ req }) => {
 export const ProductFiles: CollectionConfig = {
   slug: 'product_files',
   admin: {
-    hidden: ({ user }) => user.role !== 'admin',
+    hidden: ({ user }) => user && user.role !== 'admin',
   },
   hooks: {
     beforeChange: [addUser],
   },
   access: {
     read: yourOwnAndPurchased,
-    update: ({ req }) => req.user.role === 'admin',
-    delete: ({ req }) => req.user.role === 'admin',
+    update: ({ req }) => req.user && req.user.role === 'admin',
+    delete: ({ req }) => req.user && req.user.role === 'admin',
   },
   upload: {
     staticDir: 'product_files',

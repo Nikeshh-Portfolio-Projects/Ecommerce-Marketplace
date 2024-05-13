@@ -1,6 +1,7 @@
 import { TRPCError, initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { User } from "@/payload-types";
+import { PayloadRequest } from 'payload/types'
 
 const t = initTRPC.create({
   transformer: superjson,
@@ -9,7 +10,7 @@ const t = initTRPC.create({
 const middleware = t.middleware;
 
 const isAuth = middleware(async ({ ctx, next }) => {
-  const req = (ctx as any).req;
+  const req = (ctx as any).req as PayloadRequest;
 
   const { user } = req as { user: User | null };
 

@@ -13,7 +13,7 @@ const addUser: BeforeChangeHook<Product> = async ({
 }) => {
   const user = req.user
 
-  return { ...data, user: user.id }
+  return { ...data, user: user?.id }
 }
 
 const syncUser: AfterChangeHook<Product> = async ({
@@ -22,7 +22,7 @@ const syncUser: AfterChangeHook<Product> = async ({
 }) => {
   const fullUser = await req.payload.findByID({
     collection: 'users',
-    id: req.user.id,
+    id: req?.user?.id ?? "",
   })
 
   if (fullUser && typeof fullUser === 'object') {
@@ -185,9 +185,9 @@ export const Products: CollectionConfig = {
       type: 'select',
       defaultValue: 'pending',
       access: {
-        create: ({ req }) => req.user.role === 'admin',
-        read: ({ req }) => req.user.role === 'admin',
-        update: ({ req }) => req.user.role === 'admin',
+        create: ({ req }) => req.user && req.user.role === 'admin',
+        read: ({ req }) => req.user && req.user.role === 'admin',
+        update: ({ req }) => req.user && req.user.role === 'admin',
       },
       options: [
         {

@@ -3,6 +3,8 @@ import { authRouter } from './auth-router'
 import { QueryValidator } from '@/lib/validators/query-validator'
 import { paymentRouter } from './payment-router'
 import { publicProcedure, router } from './trpc'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
 
 export const appRouter = router({
   auth: authRouter,
@@ -20,6 +22,9 @@ export const appRouter = router({
       const { query, cursor } = input
       const { sort, limit, ...queryOpts } = query
 
+      const payload = await getPayload({
+        config: configPromise,
+      })
 
       const parsedQueryOpts: Record<
         string,
@@ -34,8 +39,29 @@ export const appRouter = router({
 
       const page = cursor || 1
 
-      return {}
-    })
+      const {
+        docs: items,
+        hasNextPage,
+        nextPage,
+      } = await payload.find({
+        collection: 'products',
+        where: {
+          approvedForSale: {
+            equals: 'approved',
+          },
+          ...parsedQueryOpts,
+        },
+        sort,
+        depth: 1,
+        limit,
+        page,
+      })
+
+      return {
+        items,
+        nextPage: hasNextPage ? nextPage : null,
+      }
+    }),
 })
 
 export type AppRouter = typeof appRouter
