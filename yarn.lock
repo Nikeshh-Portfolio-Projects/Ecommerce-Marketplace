@@ -2002,6 +2002,11 @@
     source-map-support "^0.5.21"
     tslib "^2.6.2"
 
+"@swc/core-darwin-x64@1.5.5":
+  version "1.5.5"
+  resolved "https://registry.npmjs.org/@swc/core-darwin-x64/-/core-darwin-x64-1.5.5.tgz"
+  integrity sha512-XHWpKBIPKYLgh5/lV2PYjO84lkzf5JR51kjiloyz2Pa9HIV8tHoAP8bYdJwm4nUp2I7KcEh3pPH0AVu5LpxMKw==
+
 "@swc/core-linux-x64-gnu@1.5.5":
   version "1.5.5"
   resolved "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.5.5.tgz"
@@ -5818,7 +5823,7 @@ set-function-name@^2.0.1, set-function-name@^2.0.2:
     functions-have-names "^1.2.3"
     has-property-descriptors "^1.0.2"
 
-sharp@^0.33.3:
+sharp@^0.33.1, sharp@^0.33.3:
   version "0.33.3"
   resolved "https://registry.npmjs.org/sharp/-/sharp-0.33.3.tgz"
   integrity sha512-vHUeXJU1UvlO/BNwTpT0x/r53WkLUVxrmb5JTgW92fdFCFk0ispLMAeu/jPO2vjkXM1fYUi3K7/qcLF47pwM1A==
