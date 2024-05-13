@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { authRouter } from './auth-router'
 import { QueryValidator } from '@/lib/validators/query-validator'
-import { getPayloadClient } from '../../../get-payload'
 import { paymentRouter } from './payment-router'
 import { publicProcedure, router } from './trpc'
 
@@ -21,7 +20,6 @@ export const appRouter = router({
       const { query, cursor } = input
       const { sort, limit, ...queryOpts } = query
 
-      const payload = await getPayloadClient()
 
       const parsedQueryOpts: Record<
         string,
@@ -36,28 +34,7 @@ export const appRouter = router({
 
       const page = cursor || 1
 
-      const {
-        docs: items,
-        hasNextPage,
-        nextPage,
-      } = await payload.find({
-        collection: 'products',
-        where: {
-          approvedForSale: {
-            equals: 'approved',
-          },
-          ...parsedQueryOpts,
-        },
-        sort,
-        depth: 1,
-        limit,
-        page,
-      })
-
-      return {
-        items,
-        nextPage: hasNextPage ? nextPage : null,
-      }
+      return {}
     }),
     getUsers: publicProcedure.query(({ ctx }) => {
       return userList;
