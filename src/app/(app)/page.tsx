@@ -9,6 +9,7 @@ import {
   Leaf,
 } from 'lucide-react'
 import Link from 'next/link'
+import ProductReel from '@/components/ProductReel'
 
 const perks = [
   {
@@ -59,6 +60,11 @@ export default async function Home() {
             </Button>
           </div>
         </div>
+        <ProductReel
+          query={{ sort: 'desc', limit: 4 }}
+          href='/products?sort=recent'
+          title='Brand new'
+        />
       </MaxWidthWrapper>
 
       <section className='border-t border-gray-200 bg-gray-50'>

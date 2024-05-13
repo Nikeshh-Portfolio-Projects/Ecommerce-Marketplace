@@ -4,8 +4,11 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 import { fileURLToPath } from 'url'
-
-import { Users } from './collections/Users'
+import { Users } from '@/collections/Users'
+import { Products } from '@/collections/Products/Products'
+import { Media } from '@/collections/Media'
+import { ProductFiles } from '@/collections/ProductFile'
+import { Orders } from '@/collections/Orders'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -23,7 +26,7 @@ export default buildConfig({
   routes: {
     admin: "/admin"
   },
-  collections: [Users],
+  collections: [Users, Products, Media, ProductFiles, Orders], 
   editor: lexicalEditor({}),
   // plugins: [payloadCloud()], // TODO: Re-enable when cloud supports 3.0
   secret: process.env.PAYLOAD_SECRET || '',
