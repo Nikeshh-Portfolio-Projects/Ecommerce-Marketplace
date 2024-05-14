@@ -1,5 +1,7 @@
 This project which is connected with Payload CMS is not working as excepted.
 CRUD operations work but email sending and verification of token doesnt work due transporter error.
+Payload CMS for Nextjs 14 is in beta stage. Will rework on the project once Payload CMS releases a stable version.
+Meanwhile checkout Digital Ecommerce(https://github.com/Nikeshh/Digital-Ecommerce), a working ecommerce project built using Nextjs 13 + Express + Payload CMS + TRPC
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
