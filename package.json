@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
-    "@payloadcms/db-mongodb": "^3.0.0-beta.30",
+    "@payloadcms/db-mongodb": "^3.0.0-canary.6041f49",
+    "@payloadcms/email-resend": "^3.0.0-beta.29",
     "@payloadcms/next": "^3.0.0-beta.30",
     "@payloadcms/richtext-lexical": "^3.0.0-beta.30",
     "@radix-ui/react-dialog": "^1.0.5",
@@ -35,8 +36,8 @@
     "graphql": "^16.8.1",
     "lucide-react": "^0.378.0",
     "next": "14.3.0-canary.37",
-    "nodemailer": "^6.9.7",
-    "payload": "^3.0.0-beta.30",
+    "nodemailer": "^6.9.13",
+    "payload": "^3.0.0-beta.29",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
@@ -44,14 +45,15 @@
     "sonner": "^1.2.0",
     "stripe": "^14.4.0",
     "superjson": "^1.12.2",
+    "swiper": "^11.0.4",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.0.3",
     "zod": "^3.23.8",
-    "zustand": "^4.4.6",
-    "swiper": "^11.0.4"
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/inline-css": "^3.0.3",
     "@types/node": "^20.12.11",
     "@types/nodemailer": "^6.4.14",
     "@types/react": "^18.2.64",

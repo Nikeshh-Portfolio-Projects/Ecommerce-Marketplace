@@ -9,6 +9,7 @@ import { Products } from '@/collections/Products/Products'
 import { Media } from '@/collections/Media'
 import { ProductFiles } from '@/collections/ProductFile'
 import { Orders } from '@/collections/Orders'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,7 +19,7 @@ export default buildConfig({
   admin: {
     user: 'users',
     meta: {
-      titleSuffix: '- DigitalHippo',
+      titleSuffix: '- Ecommerce Marketplace',
       favicon: '/favicon.ico',
       ogImage: '/thumbnail.jpg',
     },
@@ -35,6 +36,11 @@ export default buildConfig({
   },
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
+  }),
+  email: resendAdapter({
+    defaultFromAddress: 'admin@nikeshh.com',
+    defaultFromName: 'Nikeshh',
+    apiKey: process.env.RESEND_API_KEY || '',
   }),
 
   // Sharp is now an optional dependency -

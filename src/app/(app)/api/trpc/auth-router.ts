@@ -4,6 +4,15 @@ import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import { PrimaryActionEmailHtml } from '@/components/emails/PrimaryActionEmail'
+
+const generateEmailHTML = ({ token } : { token: string}) => {
+  return PrimaryActionEmailHtml({
+    actionLabel: "verify your account",
+    buttonText: "Verify Account",
+    href: `${process.env.NEXT_PUBLIC_SERVER_URL}/verify-email?token=${token}`
+  })
+}
 
 export const authRouter = router({
   createPayloadUser: publicProcedure
@@ -32,8 +41,17 @@ export const authRouter = router({
         data: {
           email,
           password,
-          role: 'user',
+          role: 'user'
         },
+      });
+
+      payload.sendEmail({
+        to: email,
+        from: 'admin@nikeshh.com',
+        subject: 'Thanks for signing up!',
+        html: await generateEmailHTML({
+          token: "ecommerce-marketplace"
+        }),
       })
 
       return { success: true, sentToEmail: email }

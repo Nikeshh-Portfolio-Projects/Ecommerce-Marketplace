@@ -1,3 +1,6 @@
+This project which is connected with Payload CMS is not working as excepted.
+CRUD operations work but email sending and verification of token doesnt work due transporter error.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
